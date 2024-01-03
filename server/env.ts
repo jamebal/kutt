@@ -2,7 +2,6 @@ import * as dotenv from "dotenv";
 import { cleanEnv, num, str, bool } from "envalid";
 
 dotenv.config();
-
 const env = cleanEnv(process.env, {
   PORT: num({ default: 3000 }),
   SITE_NAME: str({ example: "Kutt" }),
@@ -38,7 +37,8 @@ const env = cleanEnv(process.env, {
   MAIL_FROM: str({ default: "", example: "Kutt <support@kutt.it>" }),
   MAIL_PASSWORD: str(),
   REPORT_EMAIL: str({ default: "" }),
-  CONTACT_EMAIL: str({ default: "" })
+  CONTACT_EMAIL: str({ default: "" }),
+  RECORD_NUMBER: str({ default: "" })
 });
 
 export default env;

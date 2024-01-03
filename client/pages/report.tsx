@@ -40,17 +40,18 @@ const ReportPage = () => {
     <AppWrapper>
       <Col width={600} maxWidth="97%" alignItems="flex-start">
         <H2 my={3} bold>
-          Report abuse
+          举报滥用
         </H2>
         <Text mb={3}>
-          Report abuses, malware and phishing links to the below email address
-          or use the form. We will take actions shortly.
+          报告滥用、恶意软件和钓鱼链接，请发送至以下电子邮件地址
+
+          或使用表格。我们将尽快采取行动。
         </Text>
         <Text mb={4}>
           {(publicRuntimeConfig.REPORT_EMAIL || "").replace("@", "[at]")}
         </Text>
         <Text mb={3}>
-          <Span bold>URL containing malware/scam:</Span>
+          <Span bold>包含恶意软件/诈骗的 URL:</Span>
         </Text>
         <Flex
           as="form"
@@ -70,7 +71,7 @@ const ReportPage = () => {
           />
           <Button type="submit" flex="0 0 auto" height={[40, 44]} mt={[3, 0]}>
             {loading && <Icon name={"spinner"} stroke="white" mr={2} />}
-            Send report
+            发送报告
           </Button>
         </Flex>
         <Text fontSize={14} mt={3} color={message.color}>

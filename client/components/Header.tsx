@@ -128,27 +128,6 @@ const Header: FC = () => {
             pt={0}
             pb="2px"
           >
-            <Li>
-              <ALink
-                href="//github.com/thedevs-network/kutt"
-                target="_blank"
-                rel="noopener noreferrer"
-                title="GitHub"
-                fontSize={[14, 16]}
-              >
-                GitHub
-              </ALink>
-            </Li>
-            <Li>
-              <ALink
-                href="/report"
-                title="Report abuse"
-                fontSize={[14, 16]}
-                isNextLink
-              >
-                Report
-              </ALink>
-            </Li>
           </Flex>
         )}
       </Flex>
@@ -159,20 +138,6 @@ const Header: FC = () => {
         as="ul"
         style={{ listStyle: "none" }}
       >
-        {isMobile && (
-          <Li>
-            <Flex>
-              <ALink
-                href="/report"
-                title="Report"
-                fontSize={[14, 16]}
-                isNextLink
-              >
-                Report
-              </ALink>
-            </Flex>
-          </Li>
-        )}
         {logout}
         {settings}
         {login}

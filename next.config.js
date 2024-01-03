@@ -3,6 +3,7 @@ const { parsed: localEnv } = require("dotenv").config();
 module.exports = {
   publicRuntimeConfig: {
     CONTACT_EMAIL: localEnv && localEnv.CONTACT_EMAIL,
+    RECORD_NUMBER: localEnv && localEnv.RECORD_NUMBER,
     SITE_NAME: localEnv && localEnv.SITE_NAME,
     DEFAULT_DOMAIN: localEnv && localEnv.DEFAULT_DOMAIN,
     RECAPTCHA_SITE_KEY: localEnv && localEnv.RECAPTCHA_SITE_KEY,
