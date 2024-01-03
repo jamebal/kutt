@@ -1,4 +1,5 @@
 .env
+package-lock.json
 .vscode/
 logs
 client/.next/
