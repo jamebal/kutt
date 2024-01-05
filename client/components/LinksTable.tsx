@@ -191,7 +191,7 @@ const Row: FC<RowProps> = ({ index, link, setDeleteModal }) => {
       <Tr key={link.id}>
         <Td {...ogLinkFlex} withFade>
           <Col alignItems="flex-start">
-            <ALink href={link.target}>{link.target}</ALink>
+            <ALink href={link.target} target="_blank">{link.target}</ALink>
             {link.description && (
               <Text fontSize={[13, 14]} color="#888">
                 {link.description}
@@ -244,7 +244,7 @@ const Row: FC<RowProps> = ({ index, link, setDeleteModal }) => {
               </CopyToClipboard>
             </Animation>
           )}
-          <ALink href={link.link}>{removeProtocol(link.link)}</ALink>
+          <ALink href={link.link}  target="_blank">{removeProtocol(link.link)}</ALink>
         </Td>
         <Td {...viewsFlex}>{withComma(link.visit_count)}</Td>
         <Td {...actionsFlex} justifyContent="flex-end">
