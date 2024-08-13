@@ -80,7 +80,7 @@ const Extensions = () => (
     backgroundColor={Colors.ExtensionsBg}
   >
     <H3 fontSize={[26, 28]} mb={5} color="white" light>
-      Browser extensions.
+      浏览器扩展
     </H3>
     <Flex
       width={1200}
@@ -96,7 +96,7 @@ const Extensions = () => (
       >
         <ChromeButton>
           <Icon src="/images/googlechrome.svg" color="#4285f4" />
-          <span>Download for Chrome</span>
+          <span>下载 Chrome 扩展</span>
         </ChromeButton>
       </Link>
       <Link
@@ -106,7 +106,7 @@ const Extensions = () => (
       >
         <FirefoxButton>
           <Icon src="/images/mozillafirefox.svg" color="#e0890f" />
-          <span>Download for Firefox</span>
+          <span>下载 Firefox 扩展</span>
         </FirefoxButton>
       </Link>
     </Flex>

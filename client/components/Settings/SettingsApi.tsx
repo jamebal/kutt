@@ -48,12 +48,9 @@ const SettingsApi: FC = () => {
         API
       </H2>
       <Text mb={4}>
-        In additional to this website, you can use the API to create, delete and
-        get shortened URLs. If
-        {" you're"} not familiar with API, {"don't"} generate the key. DO NOT
-        share this key on the client side of your website.{" "}
+        除本网站外，您还可以使用 API 创建、删除和获取缩短的 URL。如果您不熟悉 API，请不要生成密钥。切勿在网站客户端共享此密钥。{" "}
         <ALink href="https://docs.kutt.it" title="API Docs" target="_blank">
-          Read API docs.
+          阅读 API 文档。
         </ALink>
       </Text>
       {apikey && (
@@ -96,7 +93,7 @@ const SettingsApi: FC = () => {
       )}
       <Button mt={3} color="purple" onClick={onSubmit} disabled={loading}>
         <Icon name={loading ? "spinner" : "zap"} mr={2} stroke="white" />
-        {loading ? "Generating..." : apikey ? "Regenerate" : "Generate"} key
+        {loading ? "生成..." : apikey ? "重新生成" : "生成"} 密钥
       </Button>
       <Text fontSize={15} mt={3} color={message.color}>
         {message.text}

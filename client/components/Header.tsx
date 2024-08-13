@@ -57,12 +57,12 @@ const Header: FC = () => {
     <Li>
       <ALink
         href="/login"
-        title={!DISALLOW_REGISTRATION ? "login / signup" : "login"}
+        title={!DISALLOW_REGISTRATION ? "登录 / 注册" : "登录"}
         forButton
         isNextLink
       >
         <Button height={[32, 40]}>
-          {!DISALLOW_REGISTRATION ? "Log in / Sign up" : "Log in"}
+          {!DISALLOW_REGISTRATION ? "登录 / 注册" : "登录"}
         </Button>
       </ALink>
     </Li>
@@ -70,14 +70,14 @@ const Header: FC = () => {
   const logout = isAuthenticated && (
     <Li>
       <ALink href="/logout" title="logout" fontSize={[14, 16]} isNextLink>
-        Log out
+        登出
       </ALink>
     </Li>
   );
   const settings = isAuthenticated && (
     <Li>
       <ALink href="/settings" title="Settings" forButton isNextLink>
-        <Button height={[32, 40]}>Settings</Button>
+        <Button height={[32, 40]}>设置</Button>
       </ALink>
     </Li>
   );

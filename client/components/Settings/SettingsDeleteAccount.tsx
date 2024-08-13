@@ -53,10 +53,10 @@ const SettingsDeleteAccount: FC = () => {
   return (
     <Col alignItems="flex-start" maxWidth="100%">
       <H2 mb={4} bold>
-        Delete account
+        删除帐户
       </H2>
       <Text mb={4}>
-        Delete your account from {publicRuntimeConfig.SITE_NAME}.
+        从 {publicRuntimeConfig.SITE_NAME} 中删除您的帐户。
       </Text>
       <Text
         {...label("password")}
@@ -65,18 +65,18 @@ const SettingsDeleteAccount: FC = () => {
         fontSize={[15, 16]}
         bold
       >
-        Password:
+        密码:
       </Text>
       <RowCenterV as="form" onSubmit={onSubmit}>
         <TextInput
           {...password("accpass")}
-          placeholder="Password..."
+          placeholder="密码..."
           autocomplete="off"
           mr={3}
         />
         <Button color="red" type="submit" disabled={loading}>
           <Icon name={loading ? "spinner" : "trash"} mr={2} stroke="white" />
-          Delete
+          删除
         </Button>
       </RowCenterV>
       <Modal
@@ -86,11 +86,10 @@ const SettingsDeleteAccount: FC = () => {
       >
         <>
           <H2 mb={24} textAlign="center" bold>
-            Delete account?
+            删除账户？
           </H2>
           <Text textAlign="center">
-            All of your data including your <Span bold>LINKS</Span> and{" "}
-            <Span bold>STATS</Span> will be deleted.
+            您所有的数据，包括您的 <Span bold>链接</Span> 和 <Span bold>统计数据</Span> 将会被删除。
           </Text>
           <RowCenterH mt={44}>
             {loading ? (
@@ -104,11 +103,11 @@ const SettingsDeleteAccount: FC = () => {
             ) : (
               <>
                 <Button color="gray" mr={3} onClick={() => setModal(false)}>
-                  Cancel
+                  取消
                 </Button>
                 <Button color="red" ml={3} onClick={onDelete}>
                   <Icon name="trash" stroke="white" mr={2} />
-                  Delete
+                  删除
                 </Button>
               </>
             )}

@@ -63,10 +63,10 @@ const NeedToLogin = () => (
       mb={[32, 32, 0]}
     >
       <Title>
-        Manage links, set custom <b>domains</b> and view <b>stats</b>.
+        管理链接，设置自定义<b>域名</b>并查看<b>统计数据</b>。
       </Title>
       <Link href="/login" title="login / signup">
-        <Button>Login / Signup</Button>
+        <Button>登录/注册</Button>
       </Link>
     </Col>
     <Image src="/images/callout.png" alt="callout image" />

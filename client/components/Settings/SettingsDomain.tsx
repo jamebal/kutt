@@ -70,16 +70,10 @@ const SettingsDomain: FC = () => {
   return (
     <Col alignItems="flex-start" maxWidth="100%">
       <H2 mb={4} bold>
-        Custom domain
+        自定义域名
       </H2>
       <Text mb={3}>
-        You can set a custom domain for your short URLs, so instead of{" "}
-        <b>{publicRuntimeConfig.DEFAULT_DOMAIN}/shorturl</b> you can have{" "}
-        <b>example.com/shorturl.</b>
-      </Text>
-      <Text mb={4}>
-        Point your domain A record to <b>192.64.116.170</b> then add the domain
-        via form below:
+        您可以为短链接设置自定义域，因此可以使用 <b>example.com/shorturl.</b> 代替 <b>{publicRuntimeConfig.DEFAULT_DOMAIN}/shorturl</b>。
       </Text>
       {domains.length > 0 && (
         <Table my={3} scrollWidth="550px">
@@ -135,7 +129,7 @@ const SettingsDomain: FC = () => {
               fontSize={[15, 16]}
               bold
             >
-              Domain:
+              域名:
             </Text>
             <TextInput
               {...text("address")}
@@ -152,11 +146,11 @@ const SettingsDomain: FC = () => {
               fontSize={[15, 16]}
               bold
             >
-              Homepage (optional):
+              主页（可选）：
             </Text>
             <TextInput
               {...text("homepage")}
-              placeholder="Homepage URL"
+              placeholder="首页网址"
               flex="1 1 auto"
               maxWidth="240px"
             />
@@ -164,7 +158,7 @@ const SettingsDomain: FC = () => {
         </Flex>
         <Button type="submit" color="purple" mt={[24, 3]} disabled={loading}>
           <Icon name={loading ? "spinner" : "plus"} mr={2} stroke="white" />
-          {loading ? "Setting..." : "Set domain"}
+          {loading ? "设置..." : "设置域名"}
         </Button>
       </Col>
       <Text color={message.color}>{message.text}</Text>

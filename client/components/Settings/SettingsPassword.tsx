@@ -45,9 +45,9 @@ const SettingsPassword: FC = () => {
   return (
     <Col alignItems="flex-start" maxWidth="100%">
       <H2 mb={4} bold>
-        Change password
+        更改密码
       </H2>
-      <Text mb={4}>Enter a new password to change your current password.</Text>
+      <Text mb={4}>输入新密码以更改当前密码。</Text>
       <Text
         {...label("password")}
         as="label"
@@ -55,7 +55,7 @@ const SettingsPassword: FC = () => {
         fontSize={[15, 16]}
         bold
       >
-        New password:
+        新密码:
       </Text>
       <Flex as="form" onSubmit={onSubmit}>
         <TextInput
@@ -69,14 +69,14 @@ const SettingsPassword: FC = () => {
             }
           })}
           autocomplete="off"
-          placeholder="New password..."
+          placeholder="新密码..."
           width={[1, 2 / 3]}
           mr={3}
           required
         />
         <Button type="submit" disabled={loading}>
           <Icon name={loading ? "spinner" : "refresh"} mr={2} stroke="white" />
-          {loading ? "Updating..." : "Update"}
+          {loading ? "更新..." : "更新"}
         </Button>
       </Flex>
       <Text color={message.color} mt={3} fontSize={15}>

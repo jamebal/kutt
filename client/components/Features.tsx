@@ -14,7 +14,7 @@ const Features = () => (
     backgroundColor={Colors.FeaturesBg}
   >
     <H3 fontSize={[26, 28]} mb={72} light>
-      Kutting edge features.
+      前沿特性
     </H3>
     <Flex
       width={1200}
@@ -23,18 +23,17 @@ const Features = () => (
       justifyContent="center"
       flexWrap={["wrap", "wrap", "wrap", "nowrap"]}
     >
-      <FeaturesItem title="Managing links" icon="edit">
-        Create, protect and delete your links and monitor them with detailed
-        statistics.
+      <FeaturesItem title="管理链接" icon="edit">
+        创建、保护和删除您的链接，并通过详细统计信息进行监控。
       </FeaturesItem>
-      <FeaturesItem title="Custom domain" icon="shuffle">
-        Use custom domains for your links. Add or remove them for free.
+      <FeaturesItem title="自定义域名" icon="shuffle">
+        为您的链接使用自定义域。免费添加或删除。
       </FeaturesItem>
       <FeaturesItem title="API" icon="zap">
-        Use the provided API to create, delete, and get URLs from anywhere.
+        使用所提供的应用程序接口从任何地方创建、删除和获取 URL。
       </FeaturesItem>
-      <FeaturesItem title="Free &amp; open source" icon="heart">
-        Completely open source and free. You can host it on your own server.
+      <FeaturesItem title="免费且开源" icon="heart">
+        完全开源、免费。您可以将其托管在自己的服务器上。
       </FeaturesItem>
     </Flex>
   </ColCenterH>

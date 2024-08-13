@@ -105,11 +105,11 @@ const LoginPage = () => {
         ) : (
           <LoginForm id="login-form" onSubmit={onSubmit("login")}>
             <Text {...label("email")} as="label" mb={2} bold>
-              Email address:
+              电子邮件地址:
             </Text>
             <TextInput
               {...email("email")}
-              placeholder="Email address..."
+              placeholder="电子邮件地址..."
               height={[56, 64, 72]}
               fontSize={[15, 16]}
               px={[4, 40]}
@@ -119,11 +119,11 @@ const LoginPage = () => {
               autoFocus
             />
             <Text {...label("password")} as="label" mb={2} bold>
-              Password{!DISALLOW_REGISTRATION ? " (min chars: 8)" : ""}:
+              密码{!DISALLOW_REGISTRATION ? "（最少8位）" : ""}:
             </Text>
             <TextInput
               {...password("password")}
-              placeholder="Password..."
+              placeholder="密码..."
               px={[4, 40]}
               height={[56, 64, 72]}
               fontSize={[15, 16]}
@@ -143,7 +143,7 @@ const LoginPage = () => {
                   stroke="white"
                   mr={2}
                 />
-                Log in
+                登录
               </Button>
               {!DISALLOW_REGISTRATION && (
                 <Button
@@ -158,7 +158,7 @@ const LoginPage = () => {
                     stroke="white"
                     mr={2}
                   />
-                  Sign up
+                  注册
                 </Button>
               )}
             </Flex>
@@ -170,7 +170,7 @@ const LoginPage = () => {
               my={16}
               isNextLink
             >
-              Forgot your password?
+              忘记密码?
             </ALink>
             <Text color="red" mt={1} normal>
               {error}

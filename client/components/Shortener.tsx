@@ -129,9 +129,9 @@ const Shortener = () => {
 
   const title = !link && (
     <H1 fontSize={[25, 27, 32]} light>
-      Kutt your links{" "}
+      将您的链接{" "}
       <Span style={{ borderBottom: "2px dotted #999" }} light>
-        shorter
+        缩短
       </Span>
       .
     </H1>
@@ -200,7 +200,7 @@ const Shortener = () => {
       >
         <TextInput
           {...text("target")}
-          placeholder="Paste your long URL"
+          placeholder="粘贴您的长链接"
           placeholderSize={[16, 17, 18]}
           fontSize={[18, 20, 22]}
           aria-label="target"
@@ -234,7 +234,7 @@ const Shortener = () => {
           onChange: () => {
             if (!isAuthenticated) {
               setMessage(
-                "You need to log in or sign up to use advanced options."
+                "您需要登录或注册才能使用高级选项"
               );
               return false;
             }
@@ -242,7 +242,7 @@ const Shortener = () => {
           }
         })}
         checked={formState.values.showAdvanced}
-        label="Show advanced options"
+        label="显示高级选项"
         mt={[3, 24]}
         alignSelf="flex-start"
       />
@@ -257,7 +257,7 @@ const Shortener = () => {
                 mb={2}
                 bold
               >
-                Domain:
+                域名:
               </Text>
               <Select
                 {...select("domain")}
@@ -288,7 +288,7 @@ const Shortener = () => {
               </Text>
               <TextInput
                 {...text("customurl")}
-                placeholder="Custom address..."
+                placeholder="自定义地址..."
                 autocomplete="off"
                 data-lpignore
                 pl={[3, 24]}
@@ -307,11 +307,11 @@ const Shortener = () => {
                 mb={2}
                 bold
               >
-                Password:
+                密码:
               </Text>
               <TextInput
                 {...password("password")}
-                placeholder="Password..."
+                placeholder="密码..."
                 autocomplete="off"
                 data-lpignore
                 pl={[3, 24]}
@@ -332,7 +332,7 @@ const Shortener = () => {
                 mb={2}
                 bold
               >
-                Expire in:
+                过期时间:
               </Text>
               <TextInput
                 {...text("expire_in")}
@@ -355,11 +355,11 @@ const Shortener = () => {
                 mb={2}
                 bold
               >
-                Description:
+                描述:
               </Text>
               <TextInput
                 {...text("description")}
-                placeholder="Description"
+                placeholder="描述"
                 data-lpignore
                 pl={[3, 24]}
                 pr={[3, 24]}
