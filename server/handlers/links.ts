@@ -310,11 +310,19 @@ export const redirect = (app: ReturnType<typeof next>): Handler => async (
     });
   }
 
-  // 8. Modify target URL to append query parameters
-  const queryString = req.url.split('?')[1];
-  const targetUrl = queryString ? `${link.target}?${queryString}` : `${link.target}`;
+  let targetUrl = link.target;
 
-  // 9. Redirect to modified target
+  const path = req.path.replace(`/${address}`, "");
+
+  // 8. Append path parameters if they exist
+  if (path) {
+    targetUrl += path;
+  }
+
+  // 9. Modify target URL to append query parameters
+  const queryString = req.url.split('?')[1];
+  targetUrl = queryString ? `${targetUrl}?${queryString}` : `${targetUrl}`;
+  // 10. Redirect to modified target
   return res.redirect(targetUrl);
 };
 

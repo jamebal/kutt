@@ -62,6 +62,8 @@ app.prepare().then(async () => {
 
   server.get("/:id", asyncHandler(links.redirect(app)));
 
+  server.get("/:id/*", asyncHandler(links.redirect(app)));
+
   // Error handler
   server.use(helpers.error);
 
