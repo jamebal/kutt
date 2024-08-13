@@ -310,8 +310,12 @@ export const redirect = (app: ReturnType<typeof next>): Handler => async (
     });
   }
 
-  // 8. Redirect to target
-  return res.redirect(link.target);
+  // 8. Modify target URL to append query parameters
+  const queryString = req.url.split('?')[1];
+  const targetUrl = queryString ? `${link.target}?${queryString}` : `${link.target}`;
+
+  // 9. Redirect to modified target
+  return res.redirect(targetUrl);
 };
 
 export const redirectProtected: Handler = async (req, res) => {
