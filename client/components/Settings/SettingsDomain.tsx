@@ -164,10 +164,10 @@ const SettingsDomain: FC = () => {
       <Text color={message.color}>{message.text}</Text>
       <Modal id="delete-custom-domain" show={modal} closeHandler={closeModal}>
         <H2 mb={24} textAlign="center" bold>
-          Delete domain?
+          删除域名?
         </H2>
         <Text textAlign="center">
-          Are you sure do you want to delete the domain{" "}
+          您确定要删除域
           <Span bold>
             &quot;{domainToDelete && domainToDelete.address}&quot;
           </Span>
@@ -181,11 +181,11 @@ const SettingsDomain: FC = () => {
           ) : (
             <>
               <Button color="gray" mr={3} onClick={closeModal}>
-                Cancel
+                取消
               </Button>
               <Button color="red" ml={3} onClick={onDelete}>
                 <Icon name="trash" stroke="white" mr={2} />
-                Delete
+                删除
               </Button>
             </>
           )}

@@ -257,6 +257,10 @@ export const redirect = (app: ReturnType<typeof next>): Handler => async (
   res,
   next
 ) => {
+  console.log('redirect', req.params);
+  if (req.params.id === "_next") {
+    return next();
+  }
   const isBot = isbot(req.headers["user-agent"]);
   const isPreservedUrl = validators.preservedUrls.some(
     item => item === req.path.replace("/", "")

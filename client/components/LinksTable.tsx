@@ -344,12 +344,12 @@ const Row: FC<RowProps> = ({ index, link, setDeleteModal }) => {
                   fontSize={[14, 15]}
                   bold
                 >
-                  Target:
+                  源连接：
                 </Text>
                 <Flex as="form">
                   <TextInput
                     {...text("target")}
-                    placeholder="Target..."
+                    placeholder="源连接..."
                     placeholderSize={[13, 14]}
                     fontSize={[14, 15]}
                     height={[40, 44]}
@@ -373,7 +373,7 @@ const Row: FC<RowProps> = ({ index, link, setDeleteModal }) => {
                 <Flex as="form">
                   <TextInput
                     {...text("address")}
-                    placeholder="Custom address..."
+                    placeholder="自定义地址..."
                     placeholderSize={[13, 14]}
                     fontSize={[14, 15]}
                     height={[40, 44]}
@@ -392,14 +392,14 @@ const Row: FC<RowProps> = ({ index, link, setDeleteModal }) => {
                   fontSize={[14, 15]}
                   bold
                 >
-                  Password
+                  密码
                 </Text>
                 <Flex as="form">
                   <TextInput
                     {...password({
                       name: "password"
                     })}
-                    placeholder={link.password ? "••••••••" : "Password..."}
+                    placeholder={link.password ? "••••••••" : "密码..."}
                     autocomplete="off"
                     data-lpignore
                     pl={[3, 24]}
@@ -421,12 +421,12 @@ const Row: FC<RowProps> = ({ index, link, setDeleteModal }) => {
                   fontSize={[14, 15]}
                   bold
                 >
-                  Description:
+                  描述:
                 </Text>
                 <Flex as="form">
                   <TextInput
                     {...text("description")}
-                    placeholder="description..."
+                    placeholder="描述..."
                     placeholderSize={[13, 14]}
                     fontSize={[14, 15]}
                     height={[40, 44]}
@@ -445,7 +445,7 @@ const Row: FC<RowProps> = ({ index, link, setDeleteModal }) => {
                   fontSize={[14, 15]}
                   bold
                 >
-                  Expire in:
+                  过期时间:
                 </Text>
                 <Flex as="form">
                   <TextInput
@@ -474,7 +474,7 @@ const Row: FC<RowProps> = ({ index, link, setDeleteModal }) => {
                 stroke="white"
                 mr={2}
               />
-              {editLoading ? "Updating..." : "Update"}
+              {editLoading ? "更新..." : "更新"}
             </Button>
             {editMessage.text && (
               <Text mt={3} fontSize={15} color={editMessage.color}>
@@ -551,7 +551,7 @@ const LinksTable: FC = () => {
   const isAdmin = useStoreState((s) => s.auth.isAdmin);
   const links = useStoreState((s) => s.links);
   const { get, remove } = useStoreActions((s) => s.links);
-  const [tableMessage, setTableMessage] = useState("No links to show.");
+  const [tableMessage, setTableMessage] = useState("无链接显示.");
   const [deleteModal, setDeleteModal] = useState(-1);
   const [deleteLoading, setDeleteLoading] = useState(false);
   const [deleteMessage, setDeleteMessage] = useMessage();
@@ -720,10 +720,10 @@ const LinksTable: FC = () => {
         {linkToDelete && (
           <>
             <H2 mb={24} textAlign="center" bold>
-              Delete link?
+              删除链接?
             </H2>
             <Text textAlign="center">
-              Are you sure do you want to delete the link{" "}
+              您确定要删除链接{" "}
               <Span bold>&quot;{removeProtocol(linkToDelete.link)}&quot;</Span>?
             </Text>
             <Flex justifyContent="center" mt={44}>
@@ -742,11 +742,11 @@ const LinksTable: FC = () => {
                     mr={3}
                     onClick={() => setDeleteModal(-1)}
                   >
-                    Cancel
+                    取消
                   </Button>
                   <Button color="red" ml={3} onClick={onDelete}>
                     <Icon name="trash" stroke="white" mr={2} />
-                    Delete
+                    删除
                   </Button>
                 </>
               )}

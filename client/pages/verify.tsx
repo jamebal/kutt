@@ -50,12 +50,12 @@ const Verify: NextPage<Props> = ({ token }) => {
         <Col alignItems="center">
           <MessageWrapper>
             <Icon name="check" size={32} mr={3} stroke={Colors.CheckIcon} />
-            <Message>Your account has been verified successfully!</Message>
+            <Message>您的账户已成功验证!</Message>
           </MessageWrapper>
           <ALink href="/" forButton isNextLink>
             <Button>
               <Icon name="arrowLeft" stroke="white" mr={2} />
-              Back to homepage
+              返回主页
             </Button>
           </ALink>
         </Col>
