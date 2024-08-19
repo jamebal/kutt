@@ -501,17 +501,16 @@ const Row: FC<RowProps> = ({ index, link, setDeleteModal }) => {
       >
         <>
           <H2 mb={24} textAlign="center" bold>
-            Ban link?
+            封禁链接？
           </H2>
           <Text mb={24} textAlign="center">
-            Are you sure do you want to ban the link{" "}
-            <Span bold>&quot;{removeProtocol(link.link)}&quot;</Span>?
+            您确定要封禁 <Span bold>&quot;{removeProtocol(link.link)}&quot;</Span> 吗？
           </Text>
           <RowCenter>
-            <Checkbox {...checkbox("user")} label="User" mb={12} />
-            <Checkbox {...checkbox("userLinks")} label="User links" mb={12} />
-            <Checkbox {...checkbox("host")} label="Host" mb={12} />
-            <Checkbox {...checkbox("domain")} label="Domain" mb={12} />
+            <Checkbox {...checkbox("user")} label="用户" mb={12} />
+            <Checkbox {...checkbox("userLinks")} label="用户链接" mb={12} />
+            <Checkbox {...checkbox("host")} label="主机" mb={12} />
+            <Checkbox {...checkbox("domain")} label="域名" mb={12} />
           </RowCenter>
           <Flex justifyContent="center" mt={4}>
             {banLoading ? (
@@ -525,11 +524,11 @@ const Row: FC<RowProps> = ({ index, link, setDeleteModal }) => {
             ) : (
               <>
                 <Button color="gray" mr={3} onClick={() => setBanModal(false)}>
-                  Cancel
+                  取消
                 </Button>
                 <Button color="red" ml={3} onClick={onBan}>
                   <Icon name="stop" stroke="white" mr={2} />
-                  Ban
+                  封禁
                 </Button>
               </>
             )}

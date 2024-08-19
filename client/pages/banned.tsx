@@ -14,19 +14,21 @@ const BannedPage = () => {
     <AppWrapper>
       <Col flex="1 1 100%" alignItems="center">
         <H2 textAlign="center" my={3} normal>
-          Link has been banned and removed because of{" "}
+          链接因
           <Span style={{ borderBottom: "1px dotted rgba(0, 0, 0, 0.4)" }} bold>
-            malware or scam
+            恶意软件或诈骗
           </Span>
-          .
+          而被禁止并移除
         </H2>
         <H4 textAlign="center" normal>
-          If you noticed a malware/scam link shortened by{" "}
-          {publicRuntimeConfig.SITE_NAME},{" "}
+          如果您发现由
+          <Span style={{ borderBottom: "1px dotted rgba(0, 0, 0, 0.4)" }} bold>
+            {publicRuntimeConfig.SITE_NAME}
+          </Span>
+           缩短的恶意软件/诈骗链接,
           <ALink href="/report" title="Send report" isNextLink>
-            send us a report
+             请向我们发送报告
           </ALink>
-          .
         </H4>
       </Col>
       <Footer />

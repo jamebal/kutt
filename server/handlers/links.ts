@@ -257,7 +257,6 @@ export const redirect = (app: ReturnType<typeof next>): Handler => async (
   res,
   next
 ) => {
-  console.log('redirect', req.params);
   if (req.params.id === "_next") {
     return next();
   }

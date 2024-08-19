@@ -1,4 +1,4 @@
-import { differenceInMinutes, addMinutes, subMinutes } from "date-fns";
+import { addMinutes, differenceInMinutes, subMinutes } from "date-fns";
 import { Handler } from "express";
 import passport from "passport";
 import bcrypt from "bcryptjs";
@@ -6,8 +6,8 @@ import nanoid from "nanoid";
 import { v4 as uuid } from "uuid";
 import axios from "axios";
 
-import { CustomError } from "../utils";
 import * as utils from "../utils";
+import { CustomError } from "../utils";
 import * as redis from "../redis";
 import * as mail from "../mail";
 import query from "../queries";
@@ -30,14 +30,15 @@ const authenticate = (
 
       if (user && isStrict && !user.verified) {
         throw new CustomError(
-          "Your email address is not verified. " +
-            "Click on signup to get the verification link again.",
+          "您的电子邮件地址未经过验证。" +
+            "点击注册以再次获取验证链接。",
           400
         );
       }
 
       if (user && user.banned) {
-        throw new CustomError("You're banned from using this website.", 403);
+        console.log("user", user);
+        throw new CustomError("您已被禁止使用此站", 403);
       }
 
       if (user) {
@@ -51,12 +52,12 @@ const authenticate = (
     })(req, res, next);
   };
 
-export const local = authenticate("local", "Login credentials are wrong.");
-export const jwt = authenticate("jwt", "Unauthorized.");
-export const jwtLoose = authenticate("jwt", "Unauthorized.", false);
+export const local = authenticate("local", "登录凭证错误");
+export const jwt = authenticate("jwt", "未经授权");
+export const jwtLoose = authenticate("jwt", "未经授权", false);
 export const apikey = authenticate(
   "localapikey",
-  "API key is not correct.",
+  "API 密钥不正确",
   false
 );
 
@@ -74,7 +75,7 @@ export const cooldown: Handler = async (req, res, next) => {
     const timeToWait =
       cooldownConfig - differenceInMinutes(new Date(), new Date(ip.created_at));
     throw new CustomError(
-      `Non-logged in users are limited. Wait ${timeToWait} minutes or log in.`,
+      `未登录用户受到限制。等待 ${timeToWait} 分钟或登录`,
       400
     );
   }
@@ -100,7 +101,7 @@ export const recaptcha: Handler = async (req, res, next) => {
   });
 
   if (!isReCaptchaValid.data.success) {
-    throw new CustomError("reCAPTCHA is not valid. Try again.", 401);
+    throw new CustomError("reCAPTCHA 无效。请再试一次。", 401);
   }
 
   return next();
@@ -108,7 +109,7 @@ export const recaptcha: Handler = async (req, res, next) => {
 
 export const admin: Handler = async (req, res, next) => {
   if (req.user.admin) return next();
-  throw new CustomError("Unauthorized", 401);
+  throw new CustomError("未经授权", 401);
 };
 
 export const signup: Handler = async (req, res) => {
@@ -122,7 +123,7 @@ export const signup: Handler = async (req, res) => {
 
   await mail.verification(user);
 
-  return res.status(201).send({ message: "Verification email has been sent." });
+  return res.status(201).send({ message: "已发送验证电子邮件" });
 };
 
 export const token: Handler = async (req, res) => {
@@ -146,8 +147,7 @@ export const verify: Handler = async (req, res, next) => {
   );
 
   if (user) {
-    const token = utils.signToken(user);
-    req.token = token;
+    req.token = utils.signToken(user);
   }
 
   return next();
@@ -160,12 +160,12 @@ export const changePassword: Handler = async (req, res) => {
   const [user] = await query.user.update({ id: req.user.id }, { password });
 
   if (!user) {
-    throw new CustomError("Couldn't change the password. Try again later.");
+    throw new CustomError("无法更改密码。稍后再试");
   }
 
   return res
     .status(200)
-    .send({ message: "Your password has been changed successfully." });
+    .send({ message: "您的密码已成功更改" });
 };
 
 export const generateApiKey: Handler = async (req, res) => {
@@ -176,7 +176,7 @@ export const generateApiKey: Handler = async (req, res) => {
   const [user] = await query.user.update({ id: req.user.id }, { apikey });
 
   if (!user) {
-    throw new CustomError("Couldn't generate API key. Please try again later.");
+    throw new CustomError("无法生成 API 密钥。请稍后再试");
   }
 
   return res.status(201).send({ apikey });
@@ -196,7 +196,7 @@ export const resetPasswordRequest: Handler = async (req, res) => {
   }
 
   return res.status(200).send({
-    message: "If email address exists, a reset password email has been sent."
+    message: "如果电子邮件地址存在，则已发送重置密码电子邮件"
   });
 };
 
@@ -213,8 +213,7 @@ export const resetPassword: Handler = async (req, res, next) => {
     );
 
     if (user) {
-      const token = utils.signToken(user as UserJoined);
-      req.token = token;
+      req.token = utils.signToken(user as UserJoined);
     }
   }
   return next();
@@ -222,7 +221,7 @@ export const resetPassword: Handler = async (req, res, next) => {
 
 export const signupAccess: Handler = (req, res, next) => {
   if (!env.DISALLOW_REGISTRATION) return next();
-  return res.status(403).send({ message: "Registration is not allowed." });
+  return res.status(403).send({ message: "不允许注册" });
 };
 
 export const changeEmailRequest: Handler = async (req, res) => {
@@ -231,13 +230,13 @@ export const changeEmailRequest: Handler = async (req, res) => {
   const isMatch = await bcrypt.compare(password, req.user.password);
 
   if (!isMatch) {
-    throw new CustomError("Password is wrong.", 400);
+    throw new CustomError("密码错误", 400);
   }
 
   const currentUser = await query.user.find({ email });
 
   if (currentUser) {
-    throw new CustomError("Can't use this email address.", 400);
+    throw new CustomError("无法使用此电子邮件地址", 400);
   }
 
   const [updatedUser] = await query.user.update(
@@ -257,8 +256,7 @@ export const changeEmailRequest: Handler = async (req, res) => {
 
   return res.status(200).send({
     message:
-      "If email address exists, an email " +
-      "with a verification link has been sent."
+      "如果电子邮件地址存在，已经发送了一封包含验证链接的电子邮件"
   });
 };
 
@@ -288,8 +286,7 @@ export const changeEmail: Handler = async (req, res, next) => {
     redis.remove.user(foundUser);
 
     if (user) {
-      const token = utils.signToken(user as UserJoined);
-      req.token = token;
+      req.token = utils.signToken(user as UserJoined);
     }
   }
   return next();

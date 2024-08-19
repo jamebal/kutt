@@ -72,6 +72,16 @@ const StatsPage: NextPage<Props> = ({ id }) => {
     ? `the last ${period.replace("last", "").toLocaleLowerCase()}`
     : "all time";
 
+  let periodTextChinese = "全部时间";
+  console.log('periodText', period);
+  if (periodText === 'the last day') {
+    periodTextChinese = "最近一天";
+  } else if (periodText === 'the last week') {
+    periodTextChinese = "最近一周";
+  } else if (periodText === 'the last month') {
+    periodTextChinese = "最近一个月";
+  }
+
   return (
     <AppWrapper>
       {errorMessage ||
@@ -80,7 +90,7 @@ const StatsPage: NextPage<Props> = ({ id }) => {
           <Col width={1200} maxWidth="95%" alignItems="stretch" m="40px 0">
             <Flex justifyContent="space-between" alignItems="center" mb={3}>
               <H1 fontSize={[18, 20, 24]} light>
-                Stats for:{" "}
+                数据统计:{" "}
                 <ALink href={data.link} title="Short link">
                   {removeProtocol(data.link)}
                 </ALink>
@@ -107,7 +117,7 @@ const StatsPage: NextPage<Props> = ({ id }) => {
                 px={[3, 4]}
               >
                 <H4>
-                  Total clicks: <Span bold>{data.total}</Span>
+                  总点击数: <Span bold>{data.total}</Span>
                 </H4>
                 <Flex>
                   {[
@@ -129,6 +139,7 @@ const StatsPage: NextPage<Props> = ({ id }) => {
               </RowCenterV>
               <Col p={[3, 4]}>
                 <H2 mb={2} light>
+                  {periodTextChinese} 跟踪到的点击数: {" "}
                   <Span
                     style={{
                       borderBottom: `1px dotted ${Colors.StatsTotalUnderline}`
@@ -137,11 +148,10 @@ const StatsPage: NextPage<Props> = ({ id }) => {
                   >
                     {total}
                   </Span>{" "}
-                  tracked clicks in {periodText}.
                 </H2>
                 <Text fontSize={[13, 14]} color={Colors.StatsLastUpdateText}>
-                  Last update in{" "}
-                  {formatDate(new Date(data.updatedAt), "hh:mm aa")}
+                  最后更新时间{" "}
+                  {formatDate(new Date(data.updatedAt), "yyyy-MM-dd HH:mm:ss")}
                 </Text>
                 <Flex width={1} mt={4}>
                   <Area data={stats.views} period={period} />
@@ -152,13 +162,13 @@ const StatsPage: NextPage<Props> = ({ id }) => {
                     <Flex width={1}>
                       <Col flex="1 1 0">
                         <H2 mb={3} light>
-                          Referrals.
+                          引荐来源
                         </H2>
                         <Pie data={stats.stats.referrer} />
                       </Col>
                       <Col flex="1 1 0">
                         <H2 mb={3} light>
-                          Browsers.
+                          浏览器
                         </H2>
                         <Bar data={stats.stats.browser} />
                       </Col>
@@ -167,13 +177,13 @@ const StatsPage: NextPage<Props> = ({ id }) => {
                     <Flex width={1}>
                       <Col flex="1 1 0">
                         <H2 mb={3} light>
-                          Country.
+                          国家
                         </H2>
                         <Map data={stats.stats.country} />
                       </Col>
                       <Col flex="1 1 0">
                         <H2 mb={3} light>
-                          OS.
+                          操作系统
                         </H2>
                         <Bar data={stats.stats.os} />
                       </Col>
@@ -183,10 +193,10 @@ const StatsPage: NextPage<Props> = ({ id }) => {
               </Col>
             </Col>
             <Box alignSelf="center" my={64}>
-              <ALink href="/" title="Back to homepage" forButton isNextLink>
+              <ALink href="/" title="返回首页" forButton isNextLink>
                 <Button>
                   <Icon name="arrowLeft" stroke="white" mr={2} />
-                  Back to homepage
+                  返回首页
                 </Button>
               </ALink>
             </Box>
